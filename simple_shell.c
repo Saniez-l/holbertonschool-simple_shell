@@ -9,7 +9,7 @@ int shell(char *argv[])
 {
 	char *buff = NULL, *next;
 	size_t i = 0, n = 0;
-	
+
 	printf("$ ");
 	if (getline(&buff, &n, stdin) == -1)
 	{
@@ -27,7 +27,7 @@ int shell(char *argv[])
 	if (strcmp(argv[0], "exit") == 0)
 	{
 		free(buff);
-		return(1);
+		return (1);
 	}
 	shell_fork(argv);
 	free(buff);
