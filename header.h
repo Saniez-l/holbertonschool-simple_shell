@@ -11,5 +11,5 @@
 extern char **environ;
 int shell(char *argv[]);
 int shell_fork(char *argv[]);
-
+int _print_env(int i);
 #endif

@@ -24,7 +24,10 @@ int shell(char *argv[])
 		next = strtok(NULL, " \t\n");
 	}
 	argv[i] = NULL;
-	shell_fork(argv);
+	if (strcmp(argv[0], "exit") == 0)
+		exit(1);
+	else
+		shell_fork(argv);
 	free(buff);
 	return (0);
 }
