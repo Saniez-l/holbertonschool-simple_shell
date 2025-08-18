@@ -1,8 +1,8 @@
 #include "header.h"
 
 /**
-*print_env - print the environement
-*@env: the environement
+*_print_env - print the environement
+*@i: the number of line
 *Return: 0
 */
 
