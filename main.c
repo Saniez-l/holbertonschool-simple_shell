@@ -9,12 +9,15 @@
  */
 int main(int argc, char *argv[])
 {
+	int line = 1;
 	(void)argc;
 
 	while (1)
 	{
 		if (shell(argv) == 1)
 			break;
+
+		line++;
 	}
 	return (0);
 }
