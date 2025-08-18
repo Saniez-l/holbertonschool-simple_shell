@@ -22,15 +22,15 @@ This solution works for commands that are not built-in.<br>
 
 ## Prerequisites
 
-- Linux / macOS  
+- Linux / macOS
 
-- GCC or any compatible C compiler  
+- GCC or any compatible C compiler
 
 ## How to use
 
 1. #### Clone the repository using the link above
 
-2. #### Compile using following command : 
+2. #### Compile using following command :
 
 ```c
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
@@ -57,7 +57,7 @@ $ exit
 + .gitignore                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;           //file containing all the tests and executable files
 + README.md                 &nbsp;&nbsp;&nbsp;&nbsp;            //explanation of the project
 
-## Flowchart 
+## Flowchart
 
 ![How the function works.]()
 

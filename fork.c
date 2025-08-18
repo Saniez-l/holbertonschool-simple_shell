@@ -8,6 +8,8 @@
 int shell_fork(char *argv[])
 {
 	pid_t id;
+	char *cmd = argv[1];
+	size_t len = strlen(cmd);
 
 	id = fork();
 	if (id == -1)
@@ -25,7 +27,13 @@ int shell_fork(char *argv[])
 		else
 		{
 			execve(argv[0], argv, environ);
-			perror("execve");
+			if (cmd[0] == '"' && cmd[len - 1] == '"')
+			{
+				cmd[len - 1] = '\0';
+				fprintf(stderr, "%s: 1: %s: not found\n", argv[3], cmd + 1);
+			}
+			else
+				fprintf(stderr, "%s: 1: %s: not found\n", argv[3], argv[1]);
 			exit(1);
 		}
 	}
