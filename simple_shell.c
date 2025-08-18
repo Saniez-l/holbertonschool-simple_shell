@@ -1,35 +1,20 @@
 #include "header.h"
+
 /**
- * shell - program for print $ and enter command user
+ * main - Entry point
+ *
+ * @argc: argc (void)
  * @argv: pointeur of array argumend ask by user
- * Return: 0
+ * Return: Always 0
  */
-int shell(char *argv[])
-
+int main(int argc, char *argv[])
 {
-	char *buff = NULL, *next;
-	size_t i = 0, n = 0;
+	(void)argc;
 
-	printf("$ ");
-	if (getline(&buff, &n, stdin) == -1)
+	while (1)
 	{
-		free(buff);
-		return (1);
+		if (shell(argv) == 1)
+			break;
 	}
-	next = strtok(buff, " \t\n");
-	while (next != NULL)
-	{
-		argv[i] = next;
-		i++;
-		next = strtok(NULL, " \t\n");
-	}
-	argv[i] = NULL;
-	if (strcmp(argv[0], "exit") == 0)
-	{
-		free(buff);
-		return (1);
-	}
-	shell_fork(argv);
-	free(buff);
 	return (0);
 }
