@@ -2,16 +2,13 @@
 
 /**
 *_print_env - print the environement
-*@i: the number of line
 *Return: 0
 */
 
-int _print_env(int i)
+int _print_env(void)
 {
 	char **s = environ;
-
-	if (i != 0)
-		return (-1);
+	int i = 0;
 
 	while (s[i] != NULL)
 	{
