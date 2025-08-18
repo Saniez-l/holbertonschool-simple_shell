@@ -18,7 +18,10 @@ int shell_fork(char *argv[])
 	if (id == 0)
 	{
 		if (strcmp(argv[0], "env") == 0)
+		{
 			_print_env(0);
+			exit(1);
+		}
 		else
 		{
 			execve(argv[0], argv, environ);
