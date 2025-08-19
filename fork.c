@@ -18,7 +18,7 @@ int exe_path(char *argv[], list_t *head)
 		if (full_path == NULL)
 			return (-1);
 
-		strcpy(fullpath, head->str);
+		strcpy(full_path, head->str);
 		if (head->str[strlen(head->str) - 1] != '/')
 			strcat(full_path, "/");
 		strcat(full_path, argv[0]);
