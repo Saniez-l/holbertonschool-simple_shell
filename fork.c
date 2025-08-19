@@ -39,16 +39,14 @@ int exe_path(char *argv[], list_t *head)
 					buffer[i] = '/';
 					i++; }
 				while (i < (len + len2 + 1))
-				{
-					buffer[i] = _read->d_name[j];
+				{ buffer[i] = _read->d_name[j];
 					i++;
 					j++; }
 				buffer[i] = '\0';
-				execve (buffer, argv, environ); }
-		}
-		closedir(op); 
+				execve(buffer, argv, environ); }
+		} closedir(op);
 		head = head->next; }
-	closedir(op);
+		closedir(op);
 	return (0);
 }
 

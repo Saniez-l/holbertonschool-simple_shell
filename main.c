@@ -10,7 +10,7 @@
 int main(int argc, char *argv[])
 {
 	list_t *head;
-	char *dup = strdup(argv[0]);;
+	char *dup = strdup(argv[0]);
 
 	if (dup == NULL)
 		return (0);
