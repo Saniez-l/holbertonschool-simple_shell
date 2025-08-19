@@ -9,9 +9,11 @@ int shell(char *argv[], list_t *head)
 
 {
 	char *buff = NULL, *next;
-	size_t i = 0, n = 0;
-	list_t *tmp;
+	size_t n = 0;
+	char *buffer[128];
+	int i = 0;
 
+	(void)argv;
 	if (head == NULL)
 		return (0);
 	printf("$ ");
@@ -21,24 +23,24 @@ int shell(char *argv[], list_t *head)
 		return (1);
 	}
 	next = strtok(buff, " \t\n");
-	while (next != NULL)
+	while (next != NULL && i < 127)
 	{
-		argv[i] = next;
+		buffer[i] = next;
 		i++;
 		next = strtok(NULL, " \t\n");
 	}
-	argv[i] = NULL;
-	if (argv[0] == NULL)
+	buffer[i] = NULL;
+	if (buffer[0] == NULL)
 	{
 		free(buff);
 		return (0);
 	}
-	if (strcmp(argv[0], "exit") == 0)
+	if (strcmp(buffer[0], "exit") == 0)
 	{
 		free(buff);
 		return (1);
 	}
-	shell_fork(argv, tmp)
+	shell_fork(buffer, head);
 	free(buff);
 	return (0);
 }
