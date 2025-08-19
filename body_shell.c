@@ -2,9 +2,10 @@
 /**
  * shell - program for print $ and enter command user
  * @argv: pointeur of array argumend ask by user
+ *@head: a list with all path's directories
  * Return: 0
  */
-int shell(char *argv[])
+int shell(char *argv[], list_t *head)
 
 {
 	char *buff = NULL, *next;
@@ -34,7 +35,7 @@ int shell(char *argv[])
 		free(buff);
 		return (1);
 	}
-	shell_fork(argv);
+	shell_fork(argv, head);
 	free(buff);
 	return (0);
 }
