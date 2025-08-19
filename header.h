@@ -21,7 +21,7 @@
  */
 typedef struct list_s
 {
-	const char *str;
+	char *str;
 	struct list_s *next;
 } list_t;
 
@@ -29,8 +29,8 @@ list_t *add_node(list_t **head, const char *str);
 char *_getenv(const char *name);
 list_t *list_env(void);
 extern char **environ;
-int shell(char *argv[]);
-int shell_fork(char *argv[]);
+int shell(char *argv[], list_t *head);
+int shell_fork(char *argv[], list_t *head);
 int _print_env(void);
 void free_list(list_t *head);
 
