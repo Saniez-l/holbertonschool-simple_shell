@@ -10,7 +10,10 @@ int shell(char *argv[], list_t *head)
 {
 	char *buff = NULL, *next;
 	size_t i = 0, n = 0;
+	list_t *tmp;
 
+	if (head == NULL)
+		return (0);
 	printf("$ ");
 	if (getline(&buff, &n, stdin) == -1)
 	{
@@ -35,7 +38,7 @@ int shell(char *argv[], list_t *head)
 		free(buff);
 		return (1);
 	}
-	shell_fork(argv, head);
+	shell_fork(argv, tmp)
 	free(buff);
 	return (0);
 }
