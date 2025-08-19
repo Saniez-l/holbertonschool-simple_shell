@@ -4,50 +4,36 @@
 *exe_path -  execute a path commande
 *@argv: the commande to execute
 *@head: the list with the PATH directories
-*Return: always 0
+*Return: -1 if command not found
 */
 int exe_path(char *argv[], list_t *head)
 {
-	DIR *op = NULL;
-	struct dirent *_read = NULL;
-	char buffer[64];
-	int i, j, len = 0, len2 = 0;
+	char *full_path;
+	int len;
 
-	if (head == NULL)
-		return (0);
 	while (head != NULL)
 	{
-		op = opendir(head->str);
-		if (op == NULL)
+		len = strlen(head->str) + strlen(argv[0]) + 2;
+		full_path = malloc(len);
+		if (full_path == NULL)
+			return (-1);
+
+		strcpy(fullpath, head->str);
+		if (head->str[strlen(head->str) - 1] != '/')
+			strcat(full_path, "/");
+		strcat(full_path, argv[0]);
+
+		if (access(full_path, X_OK) == 0)
 		{
-			head = head->next;
-			continue; }
-		while ((_read = readdir(op)) != NULL)
-		{
-			if ((strcmp(_read->d_name, argv[0]) == 0) && head->str[0] == '/')
-			{
-				i = 0;
-				j = 0;
-				len = strlen(head->str);
-				len2 = strlen(_read->d_name);
-				while (i < len)
-				{
-					buffer[i] = head->str[i];
-					i++; }
-				if (i > 0 && buffer[i - 1] != '/')
-				{
-					buffer[i] = '/';
-					i++; }
-				while (i < (len + len2 + 1))
-				{ buffer[i] = _read->d_name[j];
-					i++;
-					j++; }
-				buffer[i] = '\0';
-				execve(buffer, argv, environ); }
-		} closedir(op);
-		head = head->next; }
-		closedir(op);
-	return (0);
+			execve(full_path, argv, environ);
+			perror("exepath");
+			free(full_path);
+			exit(126);
+		}
+		free(full_path);
+		head = head->next;
+	}
+	return (-1);
 }
 
 /**
@@ -60,6 +46,8 @@ int shell_fork(char *argv[], list_t *head)
 {
 	pid_t id;
 
+	if (head == NULL)
+		return (1);
 	id = fork();
 	if (id == -1)
 	{
@@ -76,14 +64,14 @@ int shell_fork(char *argv[], list_t *head)
 		else if (head != NULL && *argv[0] != '/')
 		{
 			exe_path(argv, head);
-			perror("exepath");
-			exit(1);
+			fprintf(stderr, "%s: command not found\n", argv[0]);
+			exit(127);
 		}
 		else
 		{
 			execve(argv[0], argv, environ);
 			perror("execve");
-			exit(1);
+			exit(126);
 		}
 	}
 	else
