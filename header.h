@@ -33,5 +33,5 @@ int shell(char *argv[], list_t *head);
 int shell_fork(char *argv[], list_t *head);
 int _print_env(void);
 void free_list(list_t *head);
-
+int exe_path(char *argv[], list_t *head);
 #endif
