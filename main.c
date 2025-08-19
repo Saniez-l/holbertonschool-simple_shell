@@ -9,15 +9,23 @@
  */
 int main(int argc, char *argv[])
 {
-	int line = 1;
-	(void)argc;
+	list_t *head;
+	char *dup = strdup(argv[0]);;
 
+	if (dup == NULL)
+		return (0);
+	(void)argc;
 	while (1)
 	{
-		if (shell(argv) == 1)
+		head = list_env();
+		argv[0] = dup;
+		if (shell(argv, head) == 1)
+		{
+			free_list(head);
 			break;
-
-		line++;
+		}
+		free_list(head);
 	}
+	free(dup);
 	return (0);
 }
