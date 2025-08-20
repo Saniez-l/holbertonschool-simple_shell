@@ -46,8 +46,6 @@ int exe_path(char *argv[], list_t *head)
 int shell_fork(char *buff[], list_t *head, char *argv[])
 {
 	pid_t id;
-	char *cmd = argv[1];
-	size_t len = strlen(cmd);
 
 	if (head == NULL)
 		return (1);
