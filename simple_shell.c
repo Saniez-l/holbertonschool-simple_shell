@@ -11,9 +11,15 @@ int main(int argc, char *argv[])
 {
 	list_t *head;
 
+	int isatty(int fd);
+
+
 	(void)argc;
 	while (1)
 	{
+		if (isatty(STDIN_FILENO))
+			printf("($) ");
+
 		head = list_env();
 		if (shell(argv, head) == 1)
 		{
