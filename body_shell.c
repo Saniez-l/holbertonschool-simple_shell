@@ -40,7 +40,7 @@ int shell(char *argv[], list_t *head)
 		free(buff);
 		return (1);
 	}
-	shell_fork(buffer, head);
+	shell_fork(buffer, head, argv);
 	free(buff);
 	return (0);
 }
