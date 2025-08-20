@@ -12,12 +12,14 @@ int shell(char *argv[], list_t *head)
 	size_t n = 0;
 	char *buffer[128];
 	int i = 0;
+	ssize_t test;
 
 	(void)argv;
 	if (head == NULL)
 		return (0);
 	printf("$ ");
-	if (getline(&buff, &n, stdin) == -1)
+	test = getline(&buff, &n, stdin);
+	if (test == -1)
 	{
 		free(buff);
 		return (1);
