@@ -1,6 +1,6 @@
 #include "header.h"
 /**
- * shell - program for print $ and enter command user
+ * shell - program for enter command user
  * @argv: pointeur of array argumend ask by user
  *@head: a list with all path's directories
  * Return: 0
@@ -16,7 +16,7 @@ int shell(char *argv[], list_t *head)
 	(void)argv;
 	if (head == NULL)
 		return (0);
-	printf("$ ");
+	/*printf("$ ");*/
 	if (getline(&buff, &n, stdin) == -1)
 	{
 		free(buff);
