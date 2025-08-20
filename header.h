@@ -11,6 +11,7 @@
 #include <dirent.h>
 #include <stddef.h>
 #include <fcntl.h>
+#include <errno.h>
 
 /**
  * struct list_s - singly linked list

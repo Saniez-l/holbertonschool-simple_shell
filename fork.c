@@ -46,8 +46,6 @@ int exe_path(char *argv[], list_t *head)
 int shell_fork(char *buff[], list_t *head, char *argv[])
 {
 	pid_t id;
-	char *cmd = argv[1];
-	size_t len = strlen(cmd);
 
 	if (head == NULL)
 		return (1);
@@ -67,6 +65,7 @@ int shell_fork(char *buff[], list_t *head, char *argv[])
 		else if (head != NULL && *buff[0] != '/')
 		{
 			exe_path(buff, head);
+			/*perror("./hsh");*/
 			fprintf(stderr, "%s: 1: %s: not found\n", *argv, *buff);
 			exit(127);
 		}

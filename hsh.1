@@ -1,0 +1,68 @@
+.\" Manpage for the simple shell project
+.TH hsh 1 "August 2025" "Version 1.0" "User Commands"
+.SH NAME
+hsh \- simple UNIX command interpreter
+.SH SYNOPSIS
+.B hsh
+.RI [ command_file ]
+.SH DESCRIPTION
+.B hsh
+is a simple implementation of a UNIX command interpreter.
+It reads commands from standard input (interactive mode) or from a file/script (non-interactive mode), and then executes the commands using the system calls
+.BR fork (2),
+.BR execve (2),
+and
+.BR wait (2).
+
+In interactive mode, a
+.B $
+prompt is displayed to invite the user to type a command.
+
+.SH FEATURES
+.TP
+\fBCommand execution\fR
+The shell executes commands by searching for the binary in the directories specified by the PATH environment variable.
+.TP
+\fBBuilt-ins\fR
+- \fBexit\fR : exit the shell  
+- \fBenv\fR : display the current environment
+.TP
+\fBInteractive mode\fR
+The shell reads from the terminal and displays the \fB$\fR prompt.
+.TP
+\fBNon-interactive mode\fR
+If the standard input is not a terminal (e.g. \fBecho "ls" | ./hsh\fR), the shell executes commands without displaying the prompt.
+
+.SH OPTIONS
+No specific options are currently supported.
+
+.SH RETURN VALUE
+The shell returns the exit status of the last executed command.
+
+.SH EXAMPLES
+.TP
+Start the shell in interactive mode:
+.EX
+./hsh
+$
+.EE
+.TP
+Execute a command through a pipe:
+.EX
+echo "ls -l" | ./hsh
+.EE
+.TP
+Run a script:
+.EX
+./hsh script.sh
+.EE
+
+.SH AUTHOR
+Written as part of the \fBSimple Shell\fR project at HolbertonSchool.
+
+.SH SEE ALSO
+.BR sh (1),
+.BR bash (1),
+.BR execve (2),
+.BR fork (2),
+.BR wait (2)

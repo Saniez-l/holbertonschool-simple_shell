@@ -16,7 +16,7 @@ int shell(char *argv[], list_t *head)
 	(void)argv;
 	if (head == NULL)
 		return (0);
-	printf("$ ");
+	/*printf("$ ");*/
 	if (getline(&buff, &n, stdin) == -1)
 	{
 		free(buff);
