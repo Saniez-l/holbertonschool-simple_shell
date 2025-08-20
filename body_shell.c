@@ -1,6 +1,6 @@
 #include "header.h"
 /**
- * shell - program for print $ and enter command user
+ * shell - program for enter command user
  * @argv: pointeur of array argumend ask by user
  *@head: a list with all path's directories
  * Return: 0
