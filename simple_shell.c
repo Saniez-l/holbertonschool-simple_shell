@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 	(void)argc;
 	while (1)
 	{
+		printf("($) ");
 		head = list_env();
 		if (shell(argv, head) == 1)
 		{
