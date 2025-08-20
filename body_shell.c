@@ -12,6 +12,7 @@ int shell(char *argv[], list_t *head)
 	size_t n = 0;
 	char *buffer[128];
 	int i = 0;
+	ssize_t test;
 
 	(void)argv;
 	if (head == NULL)
