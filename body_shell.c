@@ -9,10 +9,6 @@ int shell(char *argv[], list_t *head)
 
 {
 	char *buff = NULL, *next;
-<<<<<<< HEAD
-	size_t i = 0, n = 0;
-
-=======
 	size_t n = 0;
 	char *buffer[128];
 	int i = 0;
@@ -20,7 +16,6 @@ int shell(char *argv[], list_t *head)
 	(void)argv;
 	if (head == NULL)
 		return (0);
->>>>>>> develop
 	printf("$ ");
 	if (getline(&buff, &n, stdin) == -1)
 	{
@@ -38,11 +33,7 @@ int shell(char *argv[], list_t *head)
 	if (buffer[0] == NULL)
 	{
 		free(buff);
-<<<<<<< HEAD
-		return (1);
-=======
 		return (0);
->>>>>>> develop
 	}
 	if (strcmp(buffer[0], "exit") == 0)
 	{
