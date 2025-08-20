@@ -37,12 +37,13 @@ int exe_path(char *argv[], list_t *head)
 }
 
 /**
- * shell_fork - function fork shell
- * @argv: pointeur of array argumend ask by user
+ *shell_fork - function fork shell
+ *@buff: pointeur of array argumend ask by user
+ *@argv: a pointer to the commande
  *@head: a list with all path's directories
- * Return: 0
+ *Return: 0
  */
-int shell_fork(char *argv[], list_t *head)
+int shell_fork(char *buff[], list_t *head, char *argv[])
 {
 	pid_t id;
 
@@ -61,15 +62,15 @@ int shell_fork(char *argv[], list_t *head)
 			_print_env();
 			exit(1);
 		}
-		else if (head != NULL && *argv[0] != '/')
+		else if (head != NULL && *buff[0] != '/')
 		{
-			exe_path(argv, head);
-			fprintf(stderr, "%s: command not found\n", argv[0]);
+			exe_path(buff, head);
+			fprintf(stderr, "%s: 1: %s: not found\n", *argv, *buff);
 			exit(127);
 		}
 		else
 		{
-			execve(argv[0], argv, environ);
+			execve(buff[0], buff, environ);
 			perror("execve");
 			exit(126);
 		}
