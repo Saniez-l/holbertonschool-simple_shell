@@ -67,6 +67,10 @@ $ exit
 ## Flowchart
 
 ![How the function works.](image/simple_shell.jpg)
+
+
+
+
 ![How the function works.](image/body_shell.jpg)
 
 ## Future improvements
