@@ -37,7 +37,7 @@ int shell(char *argv[], list_t *head)
 	if (strcmp(buffer[0], "exit") == 0)
 	{
 		free(buff);
-		exit(EXIT_SUCCESS);
+		return (1);
 	}
 	shell_fork(buffer, head, argv);
 	free(buff);
