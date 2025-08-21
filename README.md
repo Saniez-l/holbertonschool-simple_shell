@@ -30,12 +30,13 @@ This solution works for commands that are not built-in.<br>
 
 1. #### Clone the repository using the link above
 
-2. #### Compile using following command :
+2. #### cd holbertonschool-simple_shell
+
+3. #### Compile using following command :
 
 ```c
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
-3. #### cd holbertonschool-simple_shell
 
 4. #### Run the shell :<br>
 ./hsh
