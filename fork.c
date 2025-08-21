@@ -57,15 +57,9 @@ int shell_fork(char *buff[], list_t *head, char *argv[])
 	}
 	if (id == 0)
 	{
-		if (strcmp(argv[0], "env") == 0)
-		{
-			_print_env();
-			exit(1);
-		}
-		else if (head != NULL && *buff[0] != '/')
+		if (head != NULL && *buff[0] != '/')
 		{
 			exe_path(buff, head);
-			/*perror("./hsh");*/
 			fprintf(stderr, "%s: 1: %s: not found\n", *argv, *buff);
 			exit(127);
 		}

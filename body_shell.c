@@ -16,7 +16,6 @@ int shell(char *argv[], list_t *head)
 	(void)argv;
 	if (head == NULL)
 		return (0);
-	/*printf("$ ");*/
 	if (getline(&buff, &n, stdin) == -1)
 	{
 		free(buff);
@@ -38,7 +37,11 @@ int shell(char *argv[], list_t *head)
 	if (strcmp(buffer[0], "exit") == 0)
 	{
 		free(buff);
-		return (1);
+		exit(1);
+	}
+	if (strcmp(buffer[0], "env") == 0)
+	{
+		_print_env();
 	}
 	shell_fork(buffer, head, argv);
 	free(buff);
